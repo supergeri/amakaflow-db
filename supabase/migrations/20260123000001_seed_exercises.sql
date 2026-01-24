@@ -12,9 +12,9 @@ INSERT INTO exercises (id, name, aliases, primary_muscles, secondary_muscles, eq
 ('push-up', 'Push-Up', ARRAY['Pushup', 'Push Up', 'Press Up'], ARRAY['chest'], ARRAY['anterior_deltoid', 'triceps', 'core'], ARRAY['bodyweight'], 'bodyweight', false, NULL, 'compound', 'push'),
 
 -- CHEST (Isolation)
-('dumbbell-fly', 'Dumbbell Fly', ARRAY['DB Fly', 'Dumbbell Flye', 'Chest Fly'], ARRAY['chest'], ARRAY[], ARRAY['dumbbell', 'bench'], 'dumbbell', false, NULL, 'isolation', 'push'),
-('cable-fly', 'Cable Fly', ARRAY['Cable Crossover', 'Cable Chest Fly'], ARRAY['chest'], ARRAY[], ARRAY['cable'], 'cable', false, NULL, 'isolation', 'push'),
-('pec-deck', 'Pec Deck', ARRAY['Pec Deck Machine', 'Butterfly Machine', 'Chest Fly Machine'], ARRAY['chest'], ARRAY[], ARRAY['machine'], 'machine', false, NULL, 'isolation', 'push'),
+('dumbbell-fly', 'Dumbbell Fly', ARRAY['DB Fly', 'Dumbbell Flye', 'Chest Fly'], ARRAY['chest'], ARRAY[]::TEXT[], ARRAY['dumbbell', 'bench'], 'dumbbell', false, NULL, 'isolation', 'push'),
+('cable-fly', 'Cable Fly', ARRAY['Cable Crossover', 'Cable Chest Fly'], ARRAY['chest'], ARRAY[]::TEXT[], ARRAY['cable'], 'cable', false, NULL, 'isolation', 'push'),
+('pec-deck', 'Pec Deck', ARRAY['Pec Deck Machine', 'Butterfly Machine', 'Chest Fly Machine'], ARRAY['chest'], ARRAY[]::TEXT[], ARRAY['machine'], 'machine', false, NULL, 'isolation', 'push'),
 
 -- BACK (Compound)
 ('barbell-row', 'Barbell Row', ARRAY['Bent Over Row', 'BB Row', 'Bent Over Barbell Row'], ARRAY['lats', 'rhomboids'], ARRAY['biceps', 'posterior_deltoid', 'traps'], ARRAY['barbell'], 'barbell', true, 'brzycki', 'compound', 'pull'),
@@ -44,13 +44,13 @@ INSERT INTO exercises (id, name, aliases, primary_muscles, secondary_muscles, eq
 ('barbell-curl', 'Barbell Curl', ARRAY['BB Curl', 'Standing Barbell Curl'], ARRAY['biceps'], ARRAY['forearms'], ARRAY['barbell'], 'barbell', false, NULL, 'isolation', 'pull'),
 ('dumbbell-curl', 'Dumbbell Curl', ARRAY['DB Curl', 'Bicep Curl'], ARRAY['biceps'], ARRAY['forearms'], ARRAY['dumbbell'], 'dumbbell', false, NULL, 'isolation', 'pull'),
 ('hammer-curl', 'Hammer Curl', ARRAY['DB Hammer Curl', 'Neutral Grip Curl'], ARRAY['biceps'], ARRAY['forearms'], ARRAY['dumbbell'], 'dumbbell', false, NULL, 'isolation', 'pull'),
-('preacher-curl', 'Preacher Curl', ARRAY['Scott Curl', 'EZ Bar Preacher Curl'], ARRAY['biceps'], ARRAY[], ARRAY['barbell', 'bench'], 'barbell', false, NULL, 'isolation', 'pull'),
+('preacher-curl', 'Preacher Curl', ARRAY['Scott Curl', 'EZ Bar Preacher Curl'], ARRAY['biceps'], ARRAY[]::TEXT[], ARRAY['barbell', 'bench'], 'barbell', false, NULL, 'isolation', 'pull'),
 ('cable-curl', 'Cable Curl', ARRAY['Cable Bicep Curl'], ARRAY['biceps'], ARRAY['forearms'], ARRAY['cable'], 'cable', false, NULL, 'isolation', 'pull'),
 
 -- ARMS - Triceps
-('tricep-pushdown', 'Tricep Pushdown', ARRAY['Cable Pushdown', 'Rope Pushdown', 'Tricep Pressdown'], ARRAY['triceps'], ARRAY[], ARRAY['cable'], 'cable', false, NULL, 'isolation', 'push'),
-('skull-crusher', 'Skull Crusher', ARRAY['Lying Tricep Extension', 'EZ Bar Skull Crusher'], ARRAY['triceps'], ARRAY[], ARRAY['barbell', 'bench'], 'barbell', false, NULL, 'isolation', 'push'),
-('overhead-tricep-extension', 'Overhead Tricep Extension', ARRAY['Tricep Overhead Extension', 'French Press'], ARRAY['triceps'], ARRAY[], ARRAY['dumbbell'], 'dumbbell', false, NULL, 'isolation', 'push'),
+('tricep-pushdown', 'Tricep Pushdown', ARRAY['Cable Pushdown', 'Rope Pushdown', 'Tricep Pressdown'], ARRAY['triceps'], ARRAY[]::TEXT[], ARRAY['cable'], 'cable', false, NULL, 'isolation', 'push'),
+('skull-crusher', 'Skull Crusher', ARRAY['Lying Tricep Extension', 'EZ Bar Skull Crusher'], ARRAY['triceps'], ARRAY[]::TEXT[], ARRAY['barbell', 'bench'], 'barbell', false, NULL, 'isolation', 'push'),
+('overhead-tricep-extension', 'Overhead Tricep Extension', ARRAY['Tricep Overhead Extension', 'French Press'], ARRAY['triceps'], ARRAY[]::TEXT[], ARRAY['dumbbell'], 'dumbbell', false, NULL, 'isolation', 'push'),
 ('dip', 'Dip', ARRAY['Tricep Dip', 'Parallel Bar Dip'], ARRAY['triceps'], ARRAY['chest', 'anterior_deltoid'], ARRAY['dip_station', 'bodyweight'], 'bodyweight', false, NULL, 'compound', 'push'),
 ('weighted-dip', 'Weighted Dip', ARRAY['Weighted Tricep Dip'], ARRAY['triceps'], ARRAY['chest', 'anterior_deltoid'], ARRAY['dip_station', 'bodyweight'], 'bodyweight', true, 'brzycki', 'compound', 'push'),
 ('bench-dip', 'Bench Dip', ARRAY['Tricep Bench Dip'], ARRAY['triceps'], ARRAY['anterior_deltoid'], ARRAY['bench', 'bodyweight'], 'bodyweight', false, NULL, 'isolation', 'push'),
@@ -61,22 +61,22 @@ INSERT INTO exercises (id, name, aliases, primary_muscles, secondary_muscles, eq
 ('goblet-squat', 'Goblet Squat', ARRAY['DB Goblet Squat', 'Kettlebell Goblet Squat'], ARRAY['quadriceps', 'glutes'], ARRAY['core'], ARRAY['dumbbell', 'kettlebell'], 'dumbbell', true, 'brzycki', 'compound', 'squat'),
 ('leg-press', 'Leg Press', ARRAY['Machine Leg Press', '45 Degree Leg Press'], ARRAY['quadriceps', 'glutes'], ARRAY['hamstrings'], ARRAY['machine'], 'machine', true, 'brzycki', 'compound', 'squat'),
 ('hack-squat', 'Hack Squat', ARRAY['Machine Hack Squat'], ARRAY['quadriceps'], ARRAY['glutes'], ARRAY['machine'], 'machine', true, 'brzycki', 'compound', 'squat'),
-('leg-extension', 'Leg Extension', ARRAY['Quad Extension', 'Machine Leg Extension'], ARRAY['quadriceps'], ARRAY[], ARRAY['machine'], 'machine', false, NULL, 'isolation', 'squat'),
+('leg-extension', 'Leg Extension', ARRAY['Quad Extension', 'Machine Leg Extension'], ARRAY['quadriceps'], ARRAY[]::TEXT[], ARRAY['machine'], 'machine', false, NULL, 'isolation', 'squat'),
 ('lunge', 'Lunge', ARRAY['Walking Lunge', 'Forward Lunge'], ARRAY['quadriceps', 'glutes'], ARRAY['hamstrings'], ARRAY['bodyweight'], 'bodyweight', false, NULL, 'compound', 'squat'),
 ('dumbbell-lunge', 'Dumbbell Lunge', ARRAY['DB Lunge', 'Walking DB Lunge'], ARRAY['quadriceps', 'glutes'], ARRAY['hamstrings'], ARRAY['dumbbell'], 'dumbbell', true, 'brzycki', 'compound', 'squat'),
 ('bulgarian-split-squat', 'Bulgarian Split Squat', ARRAY['Rear Foot Elevated Split Squat', 'BSS'], ARRAY['quadriceps', 'glutes'], ARRAY['hamstrings'], ARRAY['dumbbell', 'bench'], 'dumbbell', true, 'brzycki', 'compound', 'squat'),
 
 -- LEGS - Hamstrings
-('leg-curl', 'Leg Curl', ARRAY['Lying Leg Curl', 'Hamstring Curl', 'Machine Leg Curl'], ARRAY['hamstrings'], ARRAY[], ARRAY['machine'], 'machine', false, NULL, 'isolation', 'pull'),
-('seated-leg-curl', 'Seated Leg Curl', ARRAY['Seated Hamstring Curl'], ARRAY['hamstrings'], ARRAY[], ARRAY['machine'], 'machine', false, NULL, 'isolation', 'pull'),
+('leg-curl', 'Leg Curl', ARRAY['Lying Leg Curl', 'Hamstring Curl', 'Machine Leg Curl'], ARRAY['hamstrings'], ARRAY[]::TEXT[], ARRAY['machine'], 'machine', false, NULL, 'isolation', 'pull'),
+('seated-leg-curl', 'Seated Leg Curl', ARRAY['Seated Hamstring Curl'], ARRAY['hamstrings'], ARRAY[]::TEXT[], ARRAY['machine'], 'machine', false, NULL, 'isolation', 'pull'),
 
 -- LEGS - Glutes/Hips
 ('hip-thrust', 'Hip Thrust', ARRAY['Barbell Hip Thrust', 'Glute Bridge'], ARRAY['glutes'], ARRAY['hamstrings'], ARRAY['barbell', 'bench'], 'barbell', true, 'brzycki', 'compound', 'hinge'),
-('cable-kickback', 'Cable Kickback', ARRAY['Glute Kickback', 'Cable Glute Kickback'], ARRAY['glutes'], ARRAY[], ARRAY['cable'], 'cable', false, NULL, 'isolation', 'hinge'),
+('cable-kickback', 'Cable Kickback', ARRAY['Glute Kickback', 'Cable Glute Kickback'], ARRAY['glutes'], ARRAY[]::TEXT[], ARRAY['cable'], 'cable', false, NULL, 'isolation', 'hinge'),
 
 -- LEGS - Calves
-('standing-calf-raise', 'Standing Calf Raise', ARRAY['Calf Raise', 'Machine Calf Raise'], ARRAY['calves'], ARRAY[], ARRAY['machine'], 'machine', false, NULL, 'isolation', 'push'),
-('seated-calf-raise', 'Seated Calf Raise', ARRAY['Seated Calf Machine'], ARRAY['calves'], ARRAY[], ARRAY['machine'], 'machine', false, NULL, 'isolation', 'push'),
+('standing-calf-raise', 'Standing Calf Raise', ARRAY['Calf Raise', 'Machine Calf Raise'], ARRAY['calves'], ARRAY[]::TEXT[], ARRAY['machine'], 'machine', false, NULL, 'isolation', 'push'),
+('seated-calf-raise', 'Seated Calf Raise', ARRAY['Seated Calf Machine'], ARRAY['calves'], ARRAY[]::TEXT[], ARRAY['machine'], 'machine', false, NULL, 'isolation', 'push'),
 
 -- CORE
 ('plank', 'Plank', ARRAY['Front Plank', 'Forearm Plank'], ARRAY['core', 'abs'], ARRAY['obliques'], ARRAY['bodyweight'], 'bodyweight', false, NULL, 'isolation', 'carry'),
