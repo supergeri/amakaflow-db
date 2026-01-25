@@ -3,6 +3,7 @@
 from models.program import (
     ProgramGoal,
     ExperienceLevel,
+    ProgramStatus,
     TrainingProgram,
     TrainingProgramCreate,
     TrainingProgramUpdate,
@@ -17,6 +18,7 @@ from models.generation import (
 __all__ = [
     "ProgramGoal",
     "ExperienceLevel",
+    "ProgramStatus",
     "TrainingProgram",
     "TrainingProgramCreate",
     "TrainingProgramUpdate",
