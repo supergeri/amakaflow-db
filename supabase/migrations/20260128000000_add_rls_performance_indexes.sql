@@ -148,6 +148,10 @@ CREATE POLICY "Users can delete own program workouts"
 -- Step 7: Preserve service role access
 -- ============================================================================
 
+-- Drop existing service role policies first (they exist from original schema)
+DROP POLICY IF EXISTS "Service role full access on program weeks" ON program_weeks;
+DROP POLICY IF EXISTS "Service role full access on program workouts" ON program_workouts;
+
 CREATE POLICY "Service role full access on program weeks"
     ON program_weeks FOR ALL
     USING (current_setting('request.jwt.claims', true)::json->>'role' = 'service_role');
