@@ -20,7 +20,7 @@ clerk-backend-api>=1.0.0
 # Error tracking
 sentry-sdk[fastapi]>=2.0.0
 
-# AI/LLM
+# AI/LLM (pre-staged for AMA-439 chat endpoints)
 anthropic>=0.40.0
 openai>=1.0.0
 

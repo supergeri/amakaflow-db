@@ -20,7 +20,7 @@ Usage:
 """
 
 from functools import lru_cache
-from typing import Optional
+from typing import List, Optional
 
 from pydantic import Field, field_validator
 from pydantic_settings import BaseSettings, SettingsConfigDict
@@ -58,7 +58,11 @@ class Settings(BaseSettings):
 
     @property
     def supabase_key(self) -> Optional[str]:
-        """Get the Supabase key."""
+        """Get the Supabase key.
+
+        Note: Unlike mapper-api, chat-api does not fall back to supabase_anon_key.
+        Chat operations require service role access for cross-user data queries.
+        """
         return self.supabase_service_role_key
 
     # -------------------------------------------------------------------------
@@ -99,6 +103,14 @@ class Settings(BaseSettings):
     sentry_dsn: Optional[str] = Field(
         default=None,
         description="Sentry DSN for error tracking",
+    )
+
+    # -------------------------------------------------------------------------
+    # CORS
+    # -------------------------------------------------------------------------
+    allowed_origins: List[str] = Field(
+        default_factory=list,
+        description="Allowed CORS origins. If empty, defaults to localhost:3000/3001.",
     )
 
     # -------------------------------------------------------------------------

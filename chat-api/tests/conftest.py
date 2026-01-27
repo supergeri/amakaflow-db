@@ -1,9 +1,17 @@
+import os
 import sys
 from pathlib import Path
 from typing import Generator
 
 import pytest
 from fastapi.testclient import TestClient
+
+# Set test environment variables BEFORE importing backend modules.
+# backend/auth.py reads os.getenv() at module import time, so these
+# must be set before any backend imports occur.
+os.environ.setdefault("ENVIRONMENT", "test")
+os.environ.setdefault("SUPABASE_URL", "https://test.supabase.co")
+os.environ.setdefault("SUPABASE_SERVICE_ROLE_KEY", "test-supabase-key")
 
 # Ensure chat-api root is on sys.path so `import backend` and `import api` work
 ROOT = Path(__file__).resolve().parents[1]
@@ -36,7 +44,12 @@ async def mock_get_current_user() -> str:
 
 @pytest.fixture(autouse=True)
 def mock_env_vars(monkeypatch):
-    """Set mock environment variables for tests."""
+    """Reinforce test environment variables for each test function.
+
+    Note: Module-level os.environ.setdefault() above handles auth.py's
+    import-time os.getenv() calls. This fixture provides per-test
+    isolation via monkeypatch for any runtime os.getenv() calls.
+    """
     monkeypatch.setenv("ENVIRONMENT", "test")
     monkeypatch.setenv("SUPABASE_URL", "https://test.supabase.co")
     monkeypatch.setenv("SUPABASE_SERVICE_ROLE_KEY", "test-supabase-key")

@@ -9,6 +9,12 @@ Supports two JWT types:
 E2E Test Bypass (dev/staging only):
 - X-Test-Auth header with TEST_AUTH_SECRET
 - X-Test-User-Id header with user ID to impersonate
+
+NOTE: This module is copied from mapper-api's auth.py for production-proven auth.
+TODO: Refactor to use Settings injection instead of os.getenv() at import time.
+      Module-level os.getenv() calls below are evaluated once at import and cannot
+      be overridden by monkeypatch in tests. Use monkeypatch.setattr() on the
+      module constants instead. See shared-auth extraction tracking.
 """
 import os
 import jwt

@@ -58,7 +58,7 @@ def create_app(settings: Optional[Settings] = None) -> FastAPI:
     )
 
     # Configure CORS middleware
-    _configure_cors(app)
+    _configure_cors(app, settings)
 
     # Include API routers
     _include_routers(app)
@@ -79,11 +79,15 @@ def _init_sentry(settings: Settings) -> None:
         logger.info("Sentry initialized for chat-api")
 
 
-def _configure_cors(app: FastAPI) -> None:
+def _configure_cors(app: FastAPI, settings: Settings) -> None:
     """Configure CORS middleware for the application."""
+    allowed_origins = settings.allowed_origins if settings.allowed_origins else [
+        "http://localhost:3000",
+        "http://localhost:3001",
+    ]
     app.add_middleware(
         CORSMiddleware,
-        allow_origins=["http://localhost:3000", "http://localhost:3001", "*"],
+        allow_origins=allowed_origins,
         allow_credentials=True,
         allow_methods=["*"],
         allow_headers=["*"],
