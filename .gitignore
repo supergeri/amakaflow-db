@@ -28,6 +28,7 @@ amakaflow-db/
 amakaflow-fitfiletool/
 amakaflow-ui/
 calendar-api/
+chat-api/
 garmin-sync-api/
 garmin-usb-fit-api/
 mapper-api/
