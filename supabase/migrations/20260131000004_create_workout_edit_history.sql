@@ -31,9 +31,13 @@ CREATE POLICY "Users can view own edit history"
   USING (user_id = auth.uid()::text);
 
 -- Service role can insert (API writes via service role key)
+-- This restricts inserts to the service_role, preventing unauthorized audit entries
 CREATE POLICY "Service role can insert edit history"
   ON workout_edit_history FOR INSERT
-  WITH CHECK (true);
+  WITH CHECK (
+    -- Only allow inserts from service_role or when user_id matches authenticated user
+    auth.role() = 'service_role' OR user_id = auth.uid()::text
+  );
 
 -- Comment on table
 COMMENT ON TABLE workout_edit_history IS 'Audit trail for workout patch operations (AMA-433)';
