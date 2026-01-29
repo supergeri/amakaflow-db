@@ -58,6 +58,13 @@ END;
 $$;
 
 -- =============================================================================
+-- Permissions
+-- =============================================================================
+-- Only service_role should call this function (backend only, not client-side)
+REVOKE EXECUTE ON FUNCTION increment_ai_request_limit(TEXT, DATE) FROM PUBLIC;
+GRANT EXECUTE ON FUNCTION increment_ai_request_limit(TEXT, DATE) TO service_role;
+
+-- =============================================================================
 -- Comments
 -- =============================================================================
 COMMENT ON FUNCTION increment_ai_request_limit(TEXT, DATE) IS
