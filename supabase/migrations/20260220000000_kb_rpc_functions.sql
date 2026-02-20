@@ -80,7 +80,7 @@ CREATE OR REPLACE FUNCTION knowledge_increment_usage(
 RETURNS VOID
 LANGUAGE sql
 VOLATILE
-SECURITY INVOKER
+SECURITY DEFINER
 AS $$
     INSERT INTO knowledge_usage_metrics (
         user_id, period, cards_ingested, queries_count, tokens_used, estimated_cost_usd
